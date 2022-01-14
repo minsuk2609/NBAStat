@@ -151,11 +151,13 @@ def MVPScore():
 
 temp = MVPScore()
 data = temp['MVPScore']
+data = data[:11]
 i = 0
 while i < temp.shape[0]:
     temp.iat[i, 0] = temp.iat[i, 0] +" "+ temp.iat[i,1]
     i += 1
 labels = temp['Players']
+labels = labels[:11]
 plt.rc('xtick', labelsize=6)
 plt.bar_label(plt.bar(range(len(data)), data, color=['navy']))
 plt.xticks(range(len(labels)), labels)
