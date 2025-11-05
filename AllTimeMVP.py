@@ -18,11 +18,8 @@ def Table(): #Takes the table from the website and formats it.
 def Sort(): #This is to make anyone who does not fill all of the stats drop out of the list.
     temp = Table()
     i = 0
-    while i < temp.shape[0]:
-        if np.isnan(temp.at[i,('Shooting', '3P%')]) == True:
-            temp.drop(temp.index[i:temp.shape[0]], 0, inplace=True)
-            i+=1
-        i+=1
+    temp = temp.dropna(subset=[('Shooting', '3P%')])
+    temp.reset_index(drop=True, inplace=True)
     return temp
 
 def PlayerList():
